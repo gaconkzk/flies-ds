@@ -196,5 +196,9 @@
     "not BlackBerry > 0",
     "not OperaMini all",
     "not OperaMobile > 0"
-  ]
+  ],
+  "resolutions": {
+    "underscore.string": "^3.3.5",
+    "js-yaml": "^3.13.0"
+  }
 }
