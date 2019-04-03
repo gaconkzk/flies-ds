@@ -1,9 +1,7 @@
-<template>
-  <component :is="type" :class="['example', variation]">
-    <div id="Example-container">
-      <slot/>
-    </div>
-  </component>
+<template lang="pug">
+  component(:is="type" :class="['example', variation]")
+    #Example-container
+      slot
 </template>
 
 <script>

@@ -1,7 +1,7 @@
-<template>
-  <component :is="wrapper" :class="['input', {'input-expand': width === 'expand'}]">
-    <label :for="id" v-if="label">{{ label }}</label>
-    <input
+<template lang="pug">
+  component(:is="wrapper" :class="['input', {'input-expand': width === 'expand'}]")
+    label(:for="id" v-if="label") {{ label }}
+    input(
       :id="id"
       :disabled="disabled"
       :type="type"
@@ -10,8 +10,7 @@
       :placeholder="placeholder"
       @input="onInput($event.target.value)"
       @focus="onFocus($event.target.value)"
-    >
-  </component>
+    )
 </template>
 
 <script>
@@ -188,7 +187,6 @@ $color-placeholder: tint($color-silver, 50%);
   }
 }
 </style>
-
 
 <docs>
   ```jsx
