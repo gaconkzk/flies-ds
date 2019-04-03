@@ -11,6 +11,8 @@ const webpack = require("webpack")
 const config = require("../config")
 const webpackConfig = require("./webpack.system.conf")
 
+const projectName = require("../package.json").name
+
 const spinner = ora("Building Design System...")
 spinner.start()
 
@@ -39,8 +41,8 @@ rm(path.join(config.system.assetsRoot, config.system.assetsSubDirectory), err =>
       chalk.yellow(
         "  Tip: You can now publish the design system as a private NPM module.\n" +
           "  Users can import the provided UMD module using:\n\n" +
-          "  import DesignSystem from 'vue-design-system'\n" +
-          "  import 'vue-design-system/dist/system/system.css'\n\n" +
+          `  import DesignSystem from '${projectName}'\n` +
+          `  import '${projectName}/dist/system/system.css'\n\n` +
           "  Vue.use(DesignSystem)\n"
       )
     )
