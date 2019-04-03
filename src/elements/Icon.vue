@@ -1,10 +1,9 @@
 <template>
-  <component :is="type" :aria-label="ariaLabel" :class="['icon', size]" v-html="svg"/>
+  <component :is="type" :aria-label="ariaLabel" :class="['icon', size]" v-html="svg" />
 </template>
 
 <script>
 const req = require.context("@/assets/icons/", true, /^\.\/.*\.svg$/)
-
 /**
  * Icons are used to visually communicate core parts of the product and
  * available actions. They can act as wayfinding tools to help users more
@@ -57,7 +56,10 @@ export default {
   },
   data() {
     return {
-      svg: req("./" + this.name + ".svg").replace(/^<svg /, `<svg style="fill: ${this.fill}" `),
+      // svg: req("./" + this.name + ".svg").replace(/^<svg /, `<svg style="fill: ${this.fill}" `)
+      svg: `<svg style="fill: ${this.fill}"><use xlink:href="#${
+        req("./" + this.name + ".svg").default.id
+      }"/></svg>`,
     }
   },
 }
