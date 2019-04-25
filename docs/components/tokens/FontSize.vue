@@ -1,7 +1,7 @@
 <template>
   <div class="font-sizes">
     <div
-      v-for="(prop, index) in fontSizeCategories"
+      v-for="(prop, index) in tokens"
       :key="index"
       class="font"
       :style="{ fontSize: prop.value }"
@@ -24,11 +24,6 @@ import orderBy from "lodash/orderBy"
  */
 export default {
   name: "FontSize",
-  computed: {
-    fontSizeCategories() {
-      return this.tokens.filter(tok => tok.category === "font-size")
-    },
-  },
   methods: {
     orderData: function(data) {
       let order = orderBy(data, "value", "desc")
@@ -37,7 +32,7 @@ export default {
   },
   data() {
     return {
-      tokens: this.orderData(designTokens.props),
+      tokens: this.orderData(designTokens.props).filter(tok => tok.category === "font-size"),
     }
   },
 }

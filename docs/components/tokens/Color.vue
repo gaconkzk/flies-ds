@@ -1,21 +1,15 @@
 <template>
   <div class="colors">
-    <div
-      v-for="(prop, index) in tokens"
-      :key="index"
-      class="color"
-      :class="prop.category"
-      v-if="prop.type === 'color'"
-    >
-      <div class="swatch" :style="{ backgroundColor: prop.value }"/>
-      <h3>{{prop.name.replace(/_/g, " ").replace(/color/g, "")}}</h3>
+    <div v-for="(prop, index) in tokens" :key="index" class="color" :class="prop.category">
+      <div class="swatch" :style="{ backgroundColor: prop.value }" />
+      <h3>{{ prop.name.replace(/_/g, " ").replace(/color/g, "") }}</h3>
       <span>
         <em>RGB:</em>
-        {{prop.value}}
+        {{ prop.value }}
       </span>
       <span>
         <em>SCSS:</em>
-        ${{prop.name.replace(/_/g, "-")}}
+        ${{ prop.name.replace(/_/g, "-") }}
       </span>
     </div>
   </div>
@@ -44,7 +38,7 @@ export default {
   },
   data() {
     return {
-      tokens: this.orderData(designTokens.props),
+      tokens: this.orderData(designTokens.props).filter(tok => tok.type === "color"),
     }
   },
 }
